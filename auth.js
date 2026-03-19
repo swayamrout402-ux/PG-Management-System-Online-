@@ -15,6 +15,7 @@ const messageEl = document.getElementById("message");
 const nameInput = document.getElementById("name");
 const phoneInput = document.getElementById("phone");
 const dobInput = document.getElementById("dob");
+const dobLabel = document.getElementById("dobLabel"); // ✅ ADDED
 const emailInput = document.getElementById("email");
 const passwordInput = document.getElementById("password");
 
@@ -22,6 +23,7 @@ const passwordInput = document.getElementById("password");
 if (nameInput) nameInput.style.display = "none";
 if (phoneInput) phoneInput.style.display = "none";
 if (dobInput) dobInput.style.display = "none";
+if (dobLabel) dobLabel.style.display = "none"; // ✅ ADDED
 
 // ================= ROLE TOGGLE =================
 tenantBtn.addEventListener("click", () => {
@@ -52,6 +54,8 @@ toggleModeText.addEventListener("click", () => {
   nameInput.style.display = isRegisterMode ? "block" : "none";
   phoneInput.style.display = isRegisterMode ? "block" : "none";
   dobInput.style.display = isRegisterMode ? "block" : "none";
+  if (dobLabel) dobLabel.style.display = isRegisterMode ? "block" : "none"; // ✅ ADDED
+
   messageEl.innerText = "";
 });
 
@@ -87,7 +91,6 @@ authForm.addEventListener("submit", async (e) => {
   }
 
   try {
-    // FIXED: Using backticks ensures no double-slash issues with API_BASE
     const res = await fetch(`${API_BASE}${endpoint}`, {
       method: "POST",
       headers: { 
@@ -124,6 +127,7 @@ authForm.addEventListener("submit", async (e) => {
   }
 });
 
+// ================= RESET =================
 function resetForm() {
   isRegisterMode = false;
   authForm.reset();
@@ -132,5 +136,6 @@ function resetForm() {
   nameInput.style.display = "none";
   phoneInput.style.display = "none";
   dobInput.style.display = "none";
+  if (dobLabel) dobLabel.style.display = "none"; // ✅ ADDED
   messageEl.innerText = "";
 }
