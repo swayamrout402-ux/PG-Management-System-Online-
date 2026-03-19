@@ -171,21 +171,21 @@ async function loadComplaints() {
     tbody.innerHTML = "";
 
     complaints.forEach(c => {
-        tbody.innerHTML += `
-        <tr>
-            <td>#${c.tenant_id}</td>
-            <td>${c.tenant_name}</td>
-            <td>${c.room_no || "-"}</td>
-            <td>${c.title}</td>
-            <td>${c.description}</td>
-            <td>${c.status}</td>
-            <td>${formatDate(c.created_at)}</td>
-            <td>
-                ${c.status === "OPEN"
-                    ? `<button class="resolveBtn" data-id="${c.complaint_id}">Resolve</button>`
-                    : "-"}
-            </td>
-        </tr>`;
+       <tbody.innerHTML += `
+<tr>
+  <td>#${c.tenant_id}</td>
+  <td>${c.tenant_name}</td>
+  <td>${c.room_no || "-"}</td>
+  <td>${c.title}</td>
+  <td>${c.description}</td>
+  <td>${c.status}</td>
+  <td>${formatDate(c.created_at)}</td>
+  <td>
+    ${c.status === "OPEN"
+      ? `<button class="resolveBtn" data-id="${c.complaint_id}">Resolve</button>`
+      : "-"}
+  </td>
+</tr>`;
     });
 
     document.querySelectorAll(".resolveBtn").forEach(btn => {
@@ -207,19 +207,19 @@ async function loadNotices() {
 
     notices.forEach(n => {
         tbody.innerHTML += `
-        <tr>
-            <td>#${n.tenant_id}</td>
-            <td>${n.tenant_name}</td>
-            <td>${n.room_no || "-"}</td>
-            <td>${formatDate(n.vacate_date)}</td>
-            <td>${n.reason}</td>
-            <td>
-                ${n.status}
-                ${n.status === "PENDING"
-                    ? `<br><button class="approveNoticeBtn" data-id="${n.notice_id}">Approve</button>`
-                    : ""}
-            </td>
-        </tr>`;
+<tr>
+  <td>#${n.tenant_id}</td>
+  <td>${n.tenant_name}</td>
+  <td>${n.room_no || "-"}</td>
+  <td>${formatDate(n.vacate_date)}</td>
+  <td>${n.reason}</td>
+  <td>
+    ${n.status}
+    ${n.status === "PENDING"
+      ? `<br><button class="approveNoticeBtn" data-id="${n.notice_id}">Approve</button>`
+      : ""}
+  </td>
+</tr>`;
     });
 
     document.querySelectorAll(".approveNoticeBtn").forEach(btn => {
@@ -320,15 +320,15 @@ async function loadFoodOrders() {
 
     orders.forEach(o => {
         tbody.innerHTML += `
-        <tr>
-            <td>#${o.tenant_id}</td>
-            <td>${o.tenant_name}</td>
-            <td>${o.room_no}</td>
-            <td>${o.meal_time}</td>
-            <td>${o.veg}</td>
-            <td>${o.non_veg}</td>
-            <td>${formatDate(o.created_at)}</td>
-        </tr>`;
+<tr>
+  <td>#${o.tenant_id}</td>
+  <td>${o.tenant_name}</td>
+  <td>${o.room_no}</td>
+  <td>${o.meal_time}</td>
+  <td>${o.veg}</td>
+  <td>${o.non_veg}</td>
+  <td>${formatDate(o.created_at)}</td>
+</tr>`;
     });
 }
 //addRoom
@@ -388,20 +388,18 @@ async function viewRoom(roomId) {
     if (!Array.isArray(tenants) || tenants.length === 0) {
         tbody.innerHTML = `<tr><td colspan="5">No tenants in this room</td></tr>`;
     } else {
-        tbody.innerHTML = tenants.map(t => `
-            <tr>
-                <td>#${t.tenant_id}</td
-                <td>${t.name}</td>
-                <td>${t.phone}</td>
-                <td>${formatDate(t.joining_date)}</td>
-                <td>${formatDate(t.vacate_date)}</td>
-                <td>
-                    <button onclick="removeTenant(${t.tenant_id})">
-                        Remove
-                    </button>
-                </td>
-            </tr>
-        `).join("");
+       tbody.innerHTML = tenants.map(t => `
+<tr>
+  <td>#${t.tenant_id}</td>
+  <td>${t.name}</td>
+  <td>${t.phone}</td>
+  <td>${formatDate(t.joining_date)}</td>
+  <td>${formatDate(t.vacate_date)}</td>
+  <td>
+    <button onclick="removeTenant(${t.tenant_id})">Remove</button>
+  </td>
+</tr>
+`).join("");
     }
 
     // switch section
