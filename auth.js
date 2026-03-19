@@ -1,5 +1,5 @@
 // ================= CONFIG =================
-const API_BASE = "http://localhost:5000/api";
+const API_URL = "https://pg-management-backend.vercel.app/api";
 
 let currentRole = "tenant"; // tenant | admin
 let isRegisterMode = false;
