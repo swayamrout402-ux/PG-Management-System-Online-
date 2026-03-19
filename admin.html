@@ -19,6 +19,7 @@
             <button data-section="roomsSection">Rooms</button>
             <button data-section="alertsSection">Send Alerts</button>
             <button data-section="foodSection">Food Orders</button>
+            
         </div>
 
         <!-- TENANTS -->
@@ -48,7 +49,6 @@
             <table id="paymentsTable">
                 <thead>
                     <tr>
-                        <th>Tenant ID</th>
                         <th>Tenant</th>
                         <th>Room</th>
                         <th>Amount</th>
@@ -67,7 +67,6 @@
             <table id="complaintsTable">
                 <thead>
                     <tr>
-                        <th>Tenant ID</th>
                         <th>Tenant</th>
                         <th>Room</th>
                         <th>Title</th>
@@ -79,6 +78,7 @@
                 </thead>
                 <tbody></tbody>
             </table>
+            <div id="complaintAnalytics"></div>
         </div>
 
         <!-- VACATE NOTICES -->
@@ -87,7 +87,6 @@
             <table id="noticesTable">
                 <thead>
                     <tr>
-                        <th>Tenant ID</th>
                         <th>Tenant</th>
                         <th>Room</th>
                         <th>Vacate Date</th>
@@ -100,19 +99,23 @@
         </div>
 
         <!-- ROOMS -->
+        <!-- ROOMS -->
         <div id="roomsSection" class="section">
             <h3>Room Management</h3>
-
+        
             <div class="room-form">
                 <input type="text" id="room_no" placeholder="Room Number">
+        
                 <select id="room_type">
                     <option value="AC">AC</option>
                     <option value="NON_AC">Non-AC</option>
                 </select>
+        
                 <input type="number" id="capacity" placeholder="Capacity">
+        
                 <button onclick="addRoom()">Add Room</button>
             </div>
-
+        
             <table>
                 <thead>
                     <tr>
@@ -131,29 +134,54 @@
         <!-- ROOM DETAILS -->
         <div id="roomDetailsSection" class="section">
             <h3>Room Tenants</h3>
+        
             <button onclick="goBackToRooms()">⬅ Back</button>
+        
             <table>
                 <thead>
                     <tr>
-                        <th>Tenant ID</th>
                         <th>Name</th>
                         <th>Phone</th>
                         <th>Joining</th>
-                        <th>Vacate</th>
-                        <th>Action</th>
+                        <th>Vacate</th> 
+                        <th>Action</th> 
                     </tr>
                 </thead>
                 <tbody id="roomDetailsTable"></tbody>
             </table>
         </div>
 
-        <!-- FOOD -->
+        <!-- ALERTS -->
+        <div id="alertsSection" class="section">
+            <h3>Send Alert to Tenant</h3>
+
+            <div class="alert-form">
+                <input type="number" id="alertTenantId" placeholder="Tenant ID" required>
+
+                <select id="alertType">
+                    <option value="PAYMENT">PAYMENT</option>
+                    <option value="COMPLAINT">COMPLAINT</option>
+                    <option value="TENURE">TENURE</option>
+                    <option value="NOTICE">NOTICE</option>
+                </select>
+
+                <textarea id="alertMessage" placeholder="Enter alert message" required></textarea>
+
+                <button id="sendAlertBtn">Send Alert</button>
+            </div>
+
+            <div id="alertStatus"></div>
+        </div>
+
+
+        <!-- ===== ADDED FOR FOOD FEATURE ===== -->
+        <!-- FOOD ORDERS -->
         <div id="foodSection" class="section">
             <h3>Food Orders</h3>
+
             <table id="foodTable">
                 <thead>
                     <tr>
-                        <th>Tenant ID</th>
                         <th>Tenant</th>
                         <th>Room</th>
                         <th>Meal Time</th>
@@ -165,6 +193,8 @@
                 <tbody></tbody>
             </table>
         </div>
+        <!-- ================================== -->
+
 
         <button class="logout-btn" id="logoutBtn">Logout</button>
     </div>
@@ -173,4 +203,5 @@
     <script src="admin.js"></script>
 
 </body>
+
 </html>
