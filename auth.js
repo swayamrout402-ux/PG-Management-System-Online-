@@ -24,6 +24,16 @@ if (nameInput) nameInput.style.display = "none";
 if (phoneInput) phoneInput.style.display = "none";
 if (dobInput) dobInput.style.display = "none";
 if (dobLabel) dobLabel.style.display = "none"; // ✅ ADDED
+// ================= DOB MAX DATE (13+ restriction) =================
+const today = new Date();
+const minAgeDate = new Date(
+  today.getFullYear() - 13,
+  today.getMonth(),
+  today.getDate()
+);
+
+const formattedDate = minAgeDate.toISOString().split("T")[0];
+if (dobInput) dobInput.setAttribute("max", formattedDate);
 
 // ================= ROLE TOGGLE =================
 tenantBtn.addEventListener("click", () => {
@@ -68,6 +78,29 @@ authForm.addEventListener("submit", async (e) => {
   const name = nameInput.value.trim();
   const phone = phoneInput.value.trim();
   const dob = dobInput.value; 
+  // 🔥 AGE VALIDATION (13+)
+if (isRegisterMode && currentRole === "tenant") {
+  if (!dob) {
+    messageEl.style.color = "red";
+    messageEl.innerText = "Date of Birth is required";
+    return;
+  }
+
+  const birthDate = new Date(dob);
+  const age = today.getFullYear() - birthDate.getFullYear();
+  const monthDiff = today.getMonth() - birthDate.getMonth();
+
+  const actualAge =
+    monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())
+      ? age - 1
+      : age;
+
+  if (actualAge < 13) {
+    messageEl.style.color = "red";
+    messageEl.innerText = "You must be at least 13 years old";
+    return;
+  }
+}
   const email = emailInput.value.trim();
   const password = passwordInput.value.trim();
 
