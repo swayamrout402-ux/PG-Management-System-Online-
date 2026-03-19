@@ -19,7 +19,6 @@
             <button data-section="roomsSection">Rooms</button>
             <button data-section="alertsSection">Send Alerts</button>
             <button data-section="foodSection">Food Orders</button>
-            
         </div>
 
         <!-- TENANTS -->
@@ -78,6 +77,7 @@
                 </thead>
                 <tbody></tbody>
             </table>
+
             <div id="complaintAnalytics"></div>
         </div>
 
@@ -99,23 +99,22 @@
         </div>
 
         <!-- ROOMS -->
-        <!-- ROOMS -->
         <div id="roomsSection" class="section">
             <h3>Room Management</h3>
-        
+
             <div class="room-form">
                 <input type="text" id="room_no" placeholder="Room Number">
-        
+
                 <select id="room_type">
                     <option value="AC">AC</option>
                     <option value="NON_AC">Non-AC</option>
                 </select>
-        
+
                 <input type="number" id="capacity" placeholder="Capacity">
-        
+
                 <button onclick="addRoom()">Add Room</button>
             </div>
-        
+
             <table>
                 <thead>
                     <tr>
@@ -134,17 +133,17 @@
         <!-- ROOM DETAILS -->
         <div id="roomDetailsSection" class="section">
             <h3>Room Tenants</h3>
-        
+
             <button onclick="goBackToRooms()">⬅ Back</button>
-        
+
             <table>
                 <thead>
                     <tr>
                         <th>Name</th>
                         <th>Phone</th>
                         <th>Joining</th>
-                        <th>Vacate</th> 
-                        <th>Action</th> 
+                        <th>Vacate</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody id="roomDetailsTable"></tbody>
@@ -173,8 +172,6 @@
             <div id="alertStatus"></div>
         </div>
 
-
-        <!-- ===== ADDED FOR FOOD FEATURE ===== -->
         <!-- FOOD ORDERS -->
         <div id="foodSection" class="section">
             <h3>Food Orders</h3>
@@ -193,15 +190,12 @@
                 <tbody></tbody>
             </table>
         </div>
-        <!-- ================================== -->
-
 
         <button class="logout-btn" id="logoutBtn">Logout</button>
     </div>
 
     <script src="common.js"></script>
     <script src="admin.js"></script>
-
 </body>
 
 </html>
