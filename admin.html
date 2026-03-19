@@ -61,42 +61,45 @@
         </div>
 
         <!-- COMPLAINTS -->
-        <div id="complaintsSection" class="section">
-            <h3>Complaints</h3>
-            <table id="complaintsTable">
-                <thead>
-                    <tr>
-                        <th>Tenant</th>
-                        <th>Room</th>
-                        <th>Title</th>
-                        <th>Description</th>
-                        <th>Status</th>
-                        <th>Submitted</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
-
-            <div id="complaintAnalytics"></div>
-        </div>
+        <!-- COMPLAINTS -->
+<div id="complaintsSection" class="section">
+  <h3>Complaints</h3>
+  <table id="complaintsTable">
+    <thead>
+      <tr>
+        <th>Tenant ID</th> <!-- ✅ ADDED -->
+        <th>Tenant</th>
+        <th>Room</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Status</th>
+        <th>Submitted</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+  <div id="complaintAnalytics"></div>
+</div>
 
         <!-- VACATE NOTICES -->
-        <div id="noticesSection" class="section">
-            <h3>Vacate Notices</h3>
-            <table id="noticesTable">
-                <thead>
-                    <tr>
-                        <th>Tenant</th>
-                        <th>Room</th>
-                        <th>Vacate Date</th>
-                        <th>Reason</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
-        </div>
+        <!-- VACATE NOTICES -->
+<div id="noticesSection" class="section">
+  <h3>Vacate Notices</h3>
+  <table id="noticesTable">
+    <thead>
+      <tr>
+        <th>Tenant ID</th> <!-- ✅ ADDED -->
+        <th>Tenant</th>
+        <th>Room</th>
+        <th>Vacate Date</th>
+        <th>Reason</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+</div>
 
         <!-- ROOMS -->
         <div id="roomsSection" class="section">
@@ -131,24 +134,24 @@
         </div>
 
         <!-- ROOM DETAILS -->
-        <div id="roomDetailsSection" class="section">
-            <h3>Room Tenants</h3>
-
-            <button onclick="goBackToRooms()">⬅ Back</button>
-
-            <table>
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Phone</th>
-                        <th>Joining</th>
-                        <th>Vacate</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody id="roomDetailsTable"></tbody>
-            </table>
-        </div>
+       <!-- ROOM DETAILS -->
+<div id="roomDetailsSection" class="section">
+  <h3>Room Tenants</h3>
+  <button onclick="goBackToRooms()">⬅ Back</button>
+  <table>
+    <thead>
+      <tr>
+        <th>Tenant ID</th> <!-- ✅ ADDED -->
+        <th>Name</th>
+        <th>Phone</th>
+        <th>Joining</th>
+        <th>Vacate</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody id="roomDetailsTable"></tbody>
+  </table>
+</div>
 
         <!-- ALERTS -->
         <div id="alertsSection" class="section">
@@ -173,23 +176,24 @@
         </div>
 
         <!-- FOOD ORDERS -->
-        <div id="foodSection" class="section">
-            <h3>Food Orders</h3>
-
-            <table id="foodTable">
-                <thead>
-                    <tr>
-                        <th>Tenant</th>
-                        <th>Room</th>
-                        <th>Meal Time</th>
-                        <th>Veg Qty</th>
-                        <th>Non-Veg Qty</th>
-                        <th>Ordered At</th>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
-        </div>
+        <!-- FOOD ORDERS -->
+<div id="foodSection" class="section">
+  <h3>Food Orders</h3>
+  <table id="foodTable">
+    <thead>
+      <tr>
+        <th>Tenant ID</th> <!-- ✅ ADDED -->
+        <th>Tenant</th>
+        <th>Room</th>
+        <th>Meal Time</th>
+        <th>Veg Qty</th>
+        <th>Non-Veg Qty</th>
+        <th>Ordered At</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+</div>
 
         <button class="logout-btn" id="logoutBtn">Logout</button>
     </div>
