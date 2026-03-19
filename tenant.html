@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Tenant Dashboard</title>
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+    <div class="dashboard">
+        <h2>Tenant Dashboard</h2>
+
+        <div class="nav-buttons">
+            <button onclick="showSection('detailsSection')">My Details</button>
+            <button onclick="showSection('paymentsSection')">Payments</button>
+            <button onclick="showSection('complaintsSection')">Complaints</button>
+            <button onclick="showSection('noticeSection')">Vacate Notice</button>
+            <button onclick="showSection('alertsSection')">Alerts</button>
+
+            <!-- ===== ADDED FOR FOOD FEATURE ===== -->
+            <button onclick="showSection('foodSection')">Food</button>
+            <!-- ================================== -->
+        </div>
+
+        <!-- ================= DETAILS ================= -->
+        <!-- ================= DETAILS ================= -->
+        <div id="detailsSection" class="section active">
+            <h3>My Details</h3>
+            <p>Name: <span id="t_name"></span></p>
+            <p>Phone: <span id="t_phone"></span></p>
+            <p>Room No: <span id="t_room"></span></p>
+            <p>Joining Date: <span id="t_joining"></span></p>
+            <p>Vacate Date: <span id="t_vacate"></span></p>
+            <p>Tenure: <span id="t_tenure"></span></p>
+            <p>Remaining Days: <span id="t_remaining"></span></p>
+        </div>
+
+
+        <!-- ================= PAYMENTS ================= -->
+        <div id="paymentsSection" class="section">
+            <h3>Payments</h3>
+            <form id="paymentForm">
+                <input type="number" id="amount" placeholder="Amount" required />
+                <input type="text" id="payment_mode" placeholder="Payment Mode" required />
+                <input type="text" id="reference_id" placeholder="Reference ID" />
+                <button type="submit">Pay</button>
+            </form>
+            <div id="paymentHistory"></div>
+        </div>
+
+        <!-- ================= COMPLAINTS ================= -->
+        <div id="complaintsSection" class="section">
+            <h3>Complaints</h3>
+            <form id="complaintForm">
+                <input type="text" id="complaintTitle" placeholder="Title" required />
+                <textarea id="complaintDesc" placeholder="Description" required></textarea>
+                <button type="submit">Submit Complaint</button>
+            </form>
+            <div id="complaintList"></div>
+        </div>
+
+        <!-- ================= VACATE NOTICE ================= -->
+        <div id="noticeSection" class="section">
+            <h3>Vacate Notice</h3>
+            <form id="noticeForm">
+                <input type="date" id="vacate_date" required />
+                <textarea id="vacate_reason" placeholder="Reason" required></textarea>
+                <button type="submit">Send Notice</button>
+            </form>
+            <div id="noticeStatus"></div>
+        </div>
+
+        <!-- ================= ALERTS ================= -->
+        <div id="alertsSection" class="section">
+            <h3>My Alerts</h3>
+            <div id="alertsList"></div>
+        </div>
+
+        <!-- ===== ADDED FOR FOOD FEATURE ===== -->
+        <!-- ================= FOOD ================= -->
+        <!-- ================= FOOD ================= -->
+        <div id="foodSection" class="section">
+            <h3>Order Food</h3>
+        
+            <!-- Meal Time -->
+            <select id="mealTime">
+                <option value="">Select Meal Time</option>
+                <option value="BREAKFAST">Breakfast</option>
+                <option value="LUNCH">Lunch</option>
+                <option value="DINNER">Dinner</option>
+            </select>
+        
+            <!-- Meal Type -->
+            <select id="mealType">
+                <option value="">Select Meal Type</option>
+                <option value="VEG">Veg</option>
+                <option value="NON_VEG">Non-Veg</option>
+            </select>
+        
+            <!-- Quantity -->
+            <input type="number" id="quantity" placeholder="Number of Plates" min="1">
+        
+            <button id="orderFoodBtn">Order</button>
+        
+            <div id="foodStatus"></div>
+        
+            <h3 style="margin-top:20px;">My Food Orders</h3>
+            <div id="foodHistory"></div>
+        </div>
+
+        <!-- ================================== -->
+
+        <button class="logout-btn" onclick="logout()">Logout</button>
+    </div>
+
+    <script src="js/common.js"></script>
+    <script src="js/tenant.js"></script>
+</body>
+
+</html>
