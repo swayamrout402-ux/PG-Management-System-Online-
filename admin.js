@@ -389,6 +389,7 @@ async function viewRoom(roomId) {
         tbody.innerHTML = `<tr><td colspan="5">No tenants in this room</td></tr>`;
     } else {
        tbody.innerHTML = tenants.map(t => `
+tbody.innerHTML = tenants.map(t => `
 <tr>
   <td>#${t.tenant_id}</td>
   <td>${t.name}</td>
