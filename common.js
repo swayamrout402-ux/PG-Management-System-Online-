@@ -1,5 +1,5 @@
 // ================= CONFIG =================
-const API_BASE = "https://pg-management-backend-taupe.vercel.app/api";
+const API_BASE = "https://pg-management-backend-taupe.vercel.app";
 
 // ================= AUTH FETCH =================
 async function authFetch(url, options = {}) {
