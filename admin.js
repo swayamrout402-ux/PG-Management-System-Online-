@@ -327,3 +327,51 @@ async function addRoom() {
     alert("Room added");
     loadRooms();
 }
+// ================= ALERT BUTTON FIX =================
+document.addEventListener("DOMContentLoaded", () => {
+    const sendBtn = document.getElementById("sendAlertBtn");
+
+    if (sendBtn) {
+        sendBtn.addEventListener("click", sendAlert);
+    }
+});
+// ================= SEND ALERT =================
+async function sendAlert() {
+    const tenantId = document.getElementById("alertTenantId").value;
+    const alertType = document.getElementById("alertType").value;
+    const message = document.getElementById("alertMessage").value.trim();
+    const statusDiv = document.getElementById("alertStatus");
+
+    if (!tenantId || !message) {
+        statusDiv.innerHTML = "<p style='color:red'>All fields are required</p>";
+        return;
+    }
+
+    try {
+        const res = await authFetch(`${API_BASE}/admin/alerts`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                tenant_id: tenantId,
+                alert_type: alertType,
+                message: message
+            })
+        });
+
+        const data = await res.json();
+
+        if (!res.ok) {
+            statusDiv.innerHTML = `<p style='color:red'>${data.message}</p>`;
+            return;
+        }
+
+        statusDiv.innerHTML = "<p style='color:green'>Alert sent successfully!</p>";
+
+        document.getElementById("alertTenantId").value = "";
+        document.getElementById("alertMessage").value = "";
+
+    } catch (err) {
+        console.error(err);
+        statusDiv.innerHTML = "<p style='color:red'>Failed to send alert</p>";
+    }
+}
