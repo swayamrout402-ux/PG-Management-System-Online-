@@ -59,6 +59,7 @@ async function loadTenants() {
     tenants.forEach(t => {
         tbody.innerHTML += `
         <tr>
+            <td>#${t.tenant_id}</td>
             <td>${t.name}</td>
             <td>${t.email}</td>
             <td>${t.phone}</td>
@@ -66,9 +67,8 @@ async function loadTenants() {
             <td>${formatDate(t.joining_date)}</td>
             <td>${formatDate(t.vacate_date)}</td>
             <td>${calculateRemainingDays(t.vacate_date)}</td>
-
             <td>
-                <input type="text" id="room_${t.tenant_id}" placeholder="Room No">
+                <input type="text" id="room_${t.tenant_id}">
                 <button class="assignBtn" data-id="${t.tenant_id}">Assign</button>
             </td>
         </tr>`;
@@ -173,6 +173,7 @@ async function loadComplaints() {
     complaints.forEach(c => {
         tbody.innerHTML += `
         <tr>
+            <td>#${c.tenant_id}</td>
             <td>${c.tenant_name}</td>
             <td>${c.room_no || "-"}</td>
             <td>${c.title}</td>
@@ -207,6 +208,7 @@ async function loadNotices() {
     notices.forEach(n => {
         tbody.innerHTML += `
         <tr>
+            <td>#${n.tenant_id}</td>
             <td>${n.tenant_name}</td>
             <td>${n.room_no || "-"}</td>
             <td>${formatDate(n.vacate_date)}</td>
@@ -319,6 +321,7 @@ async function loadFoodOrders() {
     orders.forEach(o => {
         tbody.innerHTML += `
         <tr>
+            <td>#${o.tenant_id}</td>
             <td>${o.tenant_name}</td>
             <td>${o.room_no}</td>
             <td>${o.meal_time}</td>
@@ -387,6 +390,7 @@ async function viewRoom(roomId) {
     } else {
         tbody.innerHTML = tenants.map(t => `
             <tr>
+                <td>#${t.tenant_id}</td
                 <td>${t.name}</td>
                 <td>${t.phone}</td>
                 <td>${formatDate(t.joining_date)}</td>
