@@ -1,6 +1,6 @@
 // ================= CONFIG =================
 // Ensure there is NO trailing slash at the end of the URL
-const API_BASE = "https://pg-management-backend-taupe.vercel.app";
+const API_BASE = "https://pg-management-backend-taupe.vercel.app/api";
 
 let currentRole = "tenant"; // tenant | admin
 let isRegisterMode = false;
