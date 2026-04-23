@@ -15,6 +15,8 @@ document.querySelectorAll(".nav-buttons button").forEach(btn => {
         if (sectionId === "noticesSection") loadNotices();
         if (sectionId === "roomsSection") loadRooms();
         if (sectionId === "foodSection") loadFoodOrders();
+        if (section === "requestsSection") loadRequests();
+
     });
 });
 
@@ -375,3 +377,65 @@ async function sendAlert() {
         statusDiv.innerHTML = "<p style='color:red'>Failed to send alert</p>";
     }
 }
+// request of rooms
+async function loadRequests() {
+    try {
+        const res = await authFetch(`${API_BASE}/requests/admin`);
+        const data = await res.json();
+
+        const table = document.querySelector("#requestsTable tbody");
+
+        if (!Array.isArray(data) || data.length === 0) {
+            table.innerHTML = "<tr><td colspan='8'>No requests found</td></tr>";
+            return;
+        }
+
+        table.innerHTML = data.map(r => `
+            <tr>
+                <td>${r.tenant_id}</td>
+                <td>${r.name}</td>
+                <td>${r.room_type}</td>
+                <td>${r.reason}</td>
+                <td>${r.status}</td>
+                <td>${new Date(r.created_at).toLocaleString('en-IN')}</td>
+                <td>${r.admin_comment || "-"}</td>
+                <td>
+                    <input type="text" id="comment_${r.id}" placeholder="Comment"/><br/><br/>
+
+                    <button onclick="updateRequest(${r.id}, 'APPROVED')">Approve</button>
+                    <button onclick="updateRequest(${r.id}, 'REJECTED')">Reject</button>
+
+                    <br/><br/>
+
+                   
+                </td>
+            </tr>
+        `).join("");
+
+    } catch (err) {
+        console.error(err);
+        alert("Error loading requests");
+    }
+}
+//update request room
+async function updateRequest(id, status) {
+    const comment = document.getElementById(`comment_${id}`).value;
+
+    try {
+        const res = await authFetch(`${API_BASE}/requests/admin/${id}`, {
+            method: "PUT",
+            body: JSON.stringify({ status, comment })
+        });
+
+        const data = await res.json();
+
+        alert(data.message);
+        loadRequests();
+
+    } catch (err) {
+        console.error(err);
+        alert("Error updating request");
+    }
+}
+
+
