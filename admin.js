@@ -15,7 +15,7 @@ document.querySelectorAll(".nav-buttons button").forEach(btn => {
         if (sectionId === "noticesSection") loadNotices();
         if (sectionId === "roomsSection") loadRooms();
         if (sectionId === "foodSection") loadFoodOrders();
-        if (section === "requestsSection") loadRequests();
+        if (sectionId === "requestsSection") loadRequests();
 
     });
 });
