@@ -17,6 +17,8 @@
             <button onclick="showSection('complaintsSection')">Complaints</button>
             <button onclick="showSection('noticeSection')">Vacate Notice</button>
             <button onclick="showSection('alertsSection')">Alerts</button>
+            <button onclick="showSection('requestSection')">Room Request</button>
+
 
             <!-- ===== ADDED FOR FOOD FEATURE ===== -->
             <button onclick="showSection('foodSection')">Food</button>
@@ -76,6 +78,42 @@
             <h3>My Alerts</h3>
             <div id="alertsList"></div>
         </div>
+
+        <!-- ================= ROOM REQUEST ================= -->
+<div id="requestSection" class="section">
+    <h3>Request Room</h3>
+
+    <select id="roomType">
+        <option value="AC">AC</option>
+        <option value="NON_AC">Non-AC</option>
+    </select>
+
+    <br><br>
+
+    <textarea id="reason" placeholder="Enter reason"></textarea>
+
+    <br><br>
+
+    <button onclick="submitRequest()">Submit Request</button>
+
+    <hr>
+
+    <h3>My Requests</h3>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Room Type</th>
+                <th>Reason</th>
+                <th>Status</th>
+                <th>Admin Comment</th>
+            </tr>
+        </thead>
+
+        <tbody id="requestTable"></tbody>
+    </table>
+</div>
+
 
         <!-- ===== ADDED FOR FOOD FEATURE ===== -->
         <!-- ================= FOOD ================= -->
