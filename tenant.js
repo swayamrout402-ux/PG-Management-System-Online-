@@ -11,6 +11,8 @@ function showSection(sectionId) {
   if (sectionId === 'noticeSection') loadNotice();
   if (sectionId === 'alertsSection') loadAlerts();
   if (sectionId === 'foodSection') loadFoodOrders();
+  if (sectionId === 'requestSection') loadRequests();
+
 
 
 }
@@ -312,4 +314,61 @@ async function loadFoodOrders() {
 }
 
 
+// ================= ROOM REQUEST: SUBMIT =================
+async function submitRequest() {
+    try {
+        const room_type = document.getElementById("roomType").value;
+        const reason = document.getElementById("reason").value;
+
+        const res = await authFetch(`${API_BASE}/requests`, {
+            method: "POST",
+            body: JSON.stringify({ room_type, reason })
+        });
+
+        const data = await res.json();
+
+        if (res.ok) {
+            alert(data.message);
+            loadRequests();
+        } else {
+            alert(data.message || "Error submitting request");
+        }
+
+    } catch (error) {
+        console.error(error);
+        alert("Server error");
+    }
+}
+
+
+// ================= ROOM REQUEST: LOAD =================
+async function loadRequests() {
+    try {
+        const res = await authFetch(`${API_BASE}/requests/my`);
+        const data = await res.json();
+
+        const table = document.getElementById("requestTable");
+
+        if (!table) return; // safety check
+
+        table.innerHTML = "";
+
+        if (!Array.isArray(data) || data.length === 0) {
+            table.innerHTML = "<tr><td colspan='4'>No requests yet</td></tr>";
+            return;
+        }
+
+        table.innerHTML = data.map(req => `
+            <tr>
+                <td>${req.room_type}</td>
+                <td>${req.reason}</td>
+                <td>${req.status}</td>
+                <td>${req.admin_comment || "-"}</td>
+            </tr>
+        `).join("");
+
+    } catch (error) {
+        console.error(error);
+    }
+}
 
