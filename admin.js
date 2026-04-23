@@ -393,7 +393,7 @@ async function loadRequests() {
         table.innerHTML = data.map(r => `
             <tr>
                 <td>${r.tenant_id}</td>
-                <td>${r.name}</td>
+                <td>${r.tenant_name || "Unknown"}</td>
                 <td>${r.room_type}</td>
                 <td>${r.reason}</td>
                 <td>${r.status}</td>
