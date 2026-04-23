@@ -391,26 +391,22 @@ async function loadRequests() {
         }
 
         table.innerHTML = data.map(r => `
-            <tr>
-                <td>${r.tenant_id}</td>
-                <td>${r.tenant_name || "Unknown"}</td>
-                <td>${r.room_type}</td>
-                <td>${r.reason}</td>
-                <td>${r.status}</td>
-                <td>${new Date(r.created_at).toLocaleString('en-IN')}</td>
-                <td>${r.admin_comment || "-"}</td>
-                <td>
-                    <input type="text" id="comment_${r.id}" placeholder="Comment"/><br/><br/>
+    <tr>
+        <td>#${r.tenant_id}</td>
+        <td>${r.tenant_name || "Unknown"}</td>
+        <td>${r.room_type}</td>
+        <td>${r.reason}</td>
+        <td>${r.status}</td>
+        <td>${new Date(r.created_at).toLocaleString('en-IN')}</td>
+        <td>${r.admin_comment || "-"}</td>
+        <td>
+            <input type="text" id="comment_${r.id}" placeholder="Comment"/><br/><br/>
+            <button onclick="updateRequest(${r.id}, 'APPROVED')">Approve</button>
+            <button onclick="updateRequest(${r.id}, 'REJECTED')">Reject</button>
+        </td>
+    </tr>
+`).join("");
 
-                    <button onclick="updateRequest(${r.id}, 'APPROVED')">Approve</button>
-                    <button onclick="updateRequest(${r.id}, 'REJECTED')">Reject</button>
-
-                    <br/><br/>
-
-                   
-                </td>
-            </tr>
-        `).join("");
 
     } catch (err) {
         console.error(err);
